@@ -20,7 +20,9 @@
  --card-text:#F5F5F5; --card-muted:#A0A0A0; --accent:#FFFFFF; --line:#2A2A2A; --button-text:#0A0A0A;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
+html{scroll-behavior:smooth;scroll-padding-top:90px;overflow-x:hidden}
+section[id],main[id]{scroll-margin-top:90px}
+body{overflow-x:hidden}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif;transition:background .3s ease,color .3s ease}
 a{color:inherit;text-decoration:none}
 .wrap{width:min(1180px,calc(100% - 44px));margin:auto}
@@ -1591,6 +1593,46 @@ document.addEventListener('keydown',event=>{ if(event.key==='Escape'){ closeCont
       }
     });
     activeCleanup=()=>{clearTimeout(timeout);ended=true;};
+  }
+})();
+</script>
+
+
+<script id="streamlit-anchor-navigation-fix">
+(() => {
+  // Scroll within this portfolio document (the Streamlit iframe), not the host page.
+  const scrollToElement = (target) => {
+    if (!target) return;
+    const y = target.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+    document.documentElement.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+    document.body.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+  };
+
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href === '#') return;
+    let target;
+    try { target = document.querySelector(href); } catch (_) { return; }
+    if (!target) return;
+    event.preventDefault();
+    scrollToElement(target);
+    if (history && history.replaceState) history.replaceState(null, '', href);
+  }, true);
+
+  // Explicit handler for the floating back-to-top button.
+  const topButton = document.querySelector('.top-button');
+  if (topButton) {
+    topButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      document.body.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      if (history && history.replaceState) history.replaceState(null, '', '#top');
+    }, true);
   }
 })();
 </script>
