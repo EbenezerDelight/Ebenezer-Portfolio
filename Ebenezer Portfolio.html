@@ -120,7 +120,7 @@ footer{padding:28px 0;color:var(--muted);display:flex;justify-content:space-betw
 .project-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:24px}
 .project-modal.is-open{display:flex}
 .modal-backdrop{position:absolute;inset:0;width:100%;height:100%;border:0;background:rgba(5,3,12,.72);backdrop-filter:blur(7px);cursor:pointer}
-.modal-panel{position:relative;z-index:1;width:min(900px,100%);max-height:min(90vh,900px);overflow:auto;background:var(--card);color:var(--card-text);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,4vw,42px);box-shadow:0 28px 90px rgba(0,0,0,.35);animation:modalIn .22s ease-out}
+.modal-panel{position:relative;z-index:1;width:min(900px,100%);max-height:82vh;overflow:auto;background:var(--card);color:var(--card-text);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,4vw,42px);box-shadow:0 28px 90px rgba(0,0,0,.35);animation:modalIn .22s ease-out}
 @keyframes modalIn{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
 .modal-close{position:sticky;float:right;top:0;margin:-8px -8px 8px 16px;width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:1.8rem;line-height:1;cursor:pointer}
 .modal-panel .eyebrow{color:var(--card-muted);margin:4px 50px 8px 0}
@@ -567,7 +567,7 @@ main {
 /* Play Arena game dialogs */
 .game-modal-backdrop{position:fixed;inset:0;z-index:10000;background:rgba(5,3,14,.82);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:18px}
 .game-modal-backdrop.open{display:flex}
-.game-modal{width:min(680px,100%);max-height:min(90vh,900px);overflow:auto;background:var(--surface,#211637);color:var(--text,#f2f0fa);border:1px solid var(--line,rgba(255,255,255,.15));border-radius:24px;padding:clamp(20px,4vw,32px);box-shadow:0 25px 90px rgba(0,0,0,.45);position:relative}
+.game-modal{width:min(680px,100%);max-height:82vh;overflow:auto;background:var(--surface,#211637);color:var(--text,#f2f0fa);border:1px solid var(--line,rgba(255,255,255,.15));border-radius:24px;padding:clamp(20px,4vw,32px);box-shadow:0 25px 90px rgba(0,0,0,.45);position:relative}
 .game-modal h2{font-size:clamp(25px,4vw,36px);margin:4px 0 12px;color:var(--text,#f2f0fa)}
 .game-modal p,.game-modal li{color:var(--muted,#b8abc9);line-height:1.6}
 .game-modal .game-close{position:absolute;right:17px;top:15px;border:1px solid var(--line);background:transparent;color:var(--text);border-radius:50%;width:38px;height:38px;font-size:22px;cursor:pointer}
@@ -632,7 +632,7 @@ main {
 /* Contact choice dialogs */
 .contact-choice-overlay{position:fixed;inset:0;z-index:1200;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(5,3,12,.72);backdrop-filter:blur(7px)}
 .contact-choice-overlay.is-open{display:flex}
-.contact-choice-panel{width:min(480px,100%);max-height:88vh;overflow:auto;position:relative;background:var(--card);color:var(--card-text);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:0 28px 90px rgba(0,0,0,.38);animation:modalIn .22s ease-out}
+.contact-choice-panel{width:min(480px,100%);max-height:82vh;overflow:auto;position:relative;background:var(--card);color:var(--card-text);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:0 28px 90px rgba(0,0,0,.38);animation:modalIn .22s ease-out}
 .contact-choice-panel h3{font-size:1.45rem;margin:4px 42px 8px 0}
 .contact-choice-panel p{color:var(--card-muted);line-height:1.6;margin:0 0 18px}
 .contact-choice-close{position:absolute;right:16px;top:16px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--text);font-size:1.5rem;cursor:pointer}
