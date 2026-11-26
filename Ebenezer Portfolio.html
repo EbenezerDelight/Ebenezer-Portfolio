@@ -1061,6 +1061,35 @@ img, svg, video, canvas {
   }
 }
 
+
+
+/* Contact dialog viewport fix: independent of page scroll and mobile browser chrome. */
+.contact-choice-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100%;
+  z-index: 20000 !important;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+}
+.contact-choice-panel {
+  flex: 0 0 auto;
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  margin: auto;
+  overscroll-behavior: contain;
+}
+.contact-choice-overlay:not(.is-open) { display: none !important; }
+.contact-choice-overlay.is-open { display: flex !important; }
+@media (max-width: 680px) {
+  .contact-choice-overlay { align-items: center; }
+  .contact-choice-panel { width: min(480px, 100%); padding: 20px 16px; }
+}
 </style>
 </head>
 <body data-theme="vibrant">
@@ -1277,8 +1306,22 @@ const personalEmail = 'edwinhappy6304@gmail.com';
 const workEmail = 'ebenezer.josephraj@cognizant.com';
 const sendDialog = document.getElementById('sendEmailDialog');
 const copyDialog = document.getElementById('copyEmailDialog');
-function openContactDialog(dialog){ dialog.classList.add('is-open'); document.body.classList.add('modal-open'); }
-function closeContactDialog(dialog){ dialog.classList.remove('is-open'); if(!document.querySelector('.contact-choice-overlay.is-open') && !document.querySelector('.project-modal.is-open')) document.body.classList.remove('modal-open'); }
+// Keep contact dialogs as direct children of <body> so fixed positioning
+// is relative to the viewport, not a transformed/scrolling portfolio section.
+document.body.appendChild(sendDialog);
+document.body.appendChild(copyDialog);
+function openContactDialog(dialog){
+  // Do not lock body scrolling here: on mobile browsers that can reset the
+  // visual viewport to the top. The fixed overlay remains viewport-centred.
+  dialog.classList.add('is-open');
+  dialog.setAttribute('aria-hidden', 'false');
+  const firstButton = dialog.querySelector('.contact-choice-close');
+  if (firstButton) firstButton.focus({preventScroll:true});
+}
+function closeContactDialog(dialog){
+  dialog.classList.remove('is-open');
+  dialog.setAttribute('aria-hidden', 'true');
+}
 document.getElementById('sendEmail').addEventListener('click', event => { event.preventDefault(); openContactDialog(sendDialog); });
 document.getElementById('copyEmail').addEventListener('click', event => { event.preventDefault(); openContactDialog(copyDialog); });
 document.querySelectorAll('[data-contact-close]').forEach(button => button.addEventListener('click', () => closeContactDialog(button.closest('.contact-choice-overlay'))));
