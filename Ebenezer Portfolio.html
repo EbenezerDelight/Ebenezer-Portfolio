@@ -643,6 +643,424 @@ main {
 .contact-choice-option small{display:block;color:var(--card-muted);margin-top:3px;overflow-wrap:anywhere}
 .contact-choice-option .choice-mark{font-size:1.15rem;opacity:.75}
 
+
+/* ==========================================================================
+   MOBILE & RESPONSIVE ALIGNMENT OVERRIDES (Preserves Desktop Layout Intact)
+   ========================================================================== */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+img, svg, video, canvas {
+  max-width: 100%;
+}
+
+/* Tablet & Small Laptop (<= 960px) */
+@media (max-width: 960px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-box {
+    grid-template-columns: 1fr;
+    padding: 32px;
+  }
+  .contact-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-width: 0;
+  }
+}
+
+/* Mobile Phone View (<= 680px) */
+@media (max-width: 680px) {
+  html {
+    scroll-padding-top: 112px;
+  }
+  .wrap {
+    width: calc(100% - 24px);
+  }
+
+  /* Navigation Bar: Clean 2-row mobile header (Logo + Theme on top, scrollable/even links below) */
+  nav {
+    backdrop-filter: blur(16px);
+  }
+  .nav-inner {
+    min-height: auto;
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "logo theme"
+      "links links";
+    align-items: center;
+    gap: 10px 12px;
+  }
+  .logo {
+    grid-area: logo;
+    font-size: 1.4rem;
+  }
+  .theme-wrap {
+    grid-area: theme;
+    justify-self: end;
+    font-size: 0; /* Hide 'Theme' label text on compact screens, keep clean pill */
+    gap: 0;
+  }
+  #themeSelect {
+    height: 38px;
+    min-width: 152px;
+    padding: 0 34px 0 13px;
+    line-height: 36px;
+    font-size: 0.84rem;
+    background-position: right 11px center;
+    background-size: 14px 14px;
+  }
+  .nav-links {
+    grid-area: links;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 4px;
+    padding-top: 8px;
+    border-top: 1px solid color-mix(in srgb, var(--line) 65%, transparent);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-links a {
+    flex: 1 0 auto;
+    text-align: center;
+    font-size: 0.84rem;
+    font-weight: 600;
+    padding: 7px 10px;
+    white-space: nowrap;
+  }
+
+  /* Hero Section */
+  .intro-arena {
+    padding: 14px 0 28px;
+  }
+  .intro-arena .hero {
+    padding: 12px 0 24px;
+  }
+  .eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+  }
+  h1 {
+    font-size: clamp(2.25rem, 9.8vw, 3.1rem);
+    line-height: 1.04;
+    margin: 14px 0;
+    letter-spacing: -0.045em;
+  }
+  .lead {
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+  .pills {
+    gap: 6px;
+    margin-top: 16px;
+  }
+  .pill {
+    padding: 6px 11px;
+    font-size: 0.76rem;
+  }
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .actions .btn {
+    width: 100%;
+    padding: 13px 16px;
+    font-size: 0.95rem;
+  }
+
+  /* Play Arena */
+  .play-arena {
+    padding: 18px 16px;
+    border-radius: 20px;
+  }
+  .arena-top {
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .arena-top h2 {
+    font-size: 1.55rem;
+  }
+  .arena-pill {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+  .arena-purpose {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .game-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .game-tile {
+    min-height: auto;
+    padding: 14px 16px;
+    border-radius: 16px;
+    gap: 4px;
+  }
+  .game-tile strong {
+    font-size: 1.05rem;
+  }
+  .game-tile small {
+    font-size: 0.84rem;
+  }
+  .leaderboard {
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+  .leaderboard-head h3 {
+    font-size: 1.1rem;
+  }
+  .leaderboard-scroll {
+    height: 150px;
+    min-height: 150px;
+    max-height: 150px;
+  }
+  .leaderboard li {
+    font-size: 0.88rem;
+    padding: 9px 0;
+  }
+
+  /* General Sections */
+  section {
+    padding: 46px 0;
+  }
+  .section-head {
+    margin-bottom: 22px;
+  }
+  .section-head h2 {
+    font-size: clamp(1.85rem, 7.8vw, 2.45rem);
+    line-height: 1.08;
+    margin: 6px 0 10px;
+  }
+  .section-head p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Work / Portfolio Cards */
+  #work .grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  #work .project-visual {
+    padding: 14px 14px 20px;
+  }
+  #work .cover-art,
+  .map-collection-card .project-visual {
+    height: 205px;
+    min-height: 205px;
+    padding: 18px;
+    gap: 10px;
+  }
+  #work .cover-line,
+  #work .cover-line-two,
+  .cover-maps .cover-line-two {
+    font-size: clamp(1.85rem, 8.2vw, 2.45rem);
+    line-height: 1.12;
+  }
+  #work .cover-kicker {
+    font-size: 0.68rem;
+    letter-spacing: 0.11em;
+  }
+  #work .project-body {
+    padding: 20px 18px;
+  }
+  #work .project-body h3 {
+    font-size: 1.25rem;
+    padding-right: 48px;
+    margin: 8px 0 10px;
+  }
+  #work .project-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 21px;
+  }
+  #work .project-body p {
+    max-width: 100%;
+    font-size: 0.92rem;
+    margin-bottom: 18px;
+  }
+  #work .project-body .tags {
+    gap: 6px;
+  }
+  #work .project-body .tag {
+    padding: 5px 11px;
+    font-size: 0.75rem;
+  }
+
+  /* About Section */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .about-panel {
+    padding: 20px 18px;
+  }
+  .portrait {
+    max-height: 340px;
+    object-position: center 25%;
+  }
+  .about-panel h3 {
+    font-size: 1.4rem;
+    margin: 14px 0 8px;
+  }
+  .about-panel p {
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+  .motto {
+    font-size: 1.2rem;
+    margin-top: 14px;
+  }
+
+  /* Skills Section */
+  .skill-groups {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .skill-card {
+    padding: 20px 18px;
+  }
+  .skill-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+  .chip {
+    padding: 6px 11px;
+    font-size: 0.82rem;
+    border-width: 1.5px;
+  }
+
+  /* Journey / Timeline */
+  .timeline {
+    padding: 0 0 20px 16px;
+    margin-left: 4px;
+  }
+  .timeline b {
+    font-size: 1rem;
+  }
+  .timeline p {
+    font-size: 0.92rem;
+    line-height: 1.6;
+  }
+
+  /* Contact Section */
+  .contact-box {
+    grid-template-columns: 1fr;
+    padding: 24px 18px;
+    gap: 20px;
+    border-radius: 20px;
+  }
+  .contact-box h2 {
+    font-size: clamp(1.85rem, 8vw, 2.5rem);
+    line-height: 1.08;
+    margin: 10px 0 12px;
+  }
+  .contact-actions {
+    grid-template-columns: 1fr;
+    min-width: 0;
+    width: 100%;
+  }
+  .contact-actions a {
+    padding: 13px 16px;
+    font-size: 0.94rem;
+  }
+
+  /* Modals & Game Dialogs */
+  .project-modal {
+    padding: 10px;
+  }
+  .modal-panel {
+    padding: 20px 16px;
+    border-radius: 18px;
+    max-height: 92vh;
+  }
+  .modal-close {
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    margin: -4px -4px 8px 12px;
+  }
+  .modal-panel h2 {
+    font-size: 1.45rem;
+    margin: 6px 38px 16px 0;
+  }
+  .contact-choice-overlay {
+    padding: 12px;
+  }
+  .contact-choice-panel {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+  .contact-choice-option {
+    padding: 12px 14px;
+  }
+  .game-modal-backdrop {
+    padding: 10px;
+  }
+  .game-modal {
+    padding: 18px 15px;
+    border-radius: 18px;
+  }
+  .game-modal h2 {
+    font-size: 1.45rem;
+    padding-right: 34px;
+  }
+  .game-hud {
+    font-size: 0.84rem;
+    gap: 8px;
+  }
+  .reaction-pad {
+    min-height: 155px;
+    font-size: 1.35rem;
+  }
+  .maze-wrap {
+    max-width: 290px;
+    gap: 4px;
+  }
+  .maze-controls {
+    grid-template-columns: repeat(3, 56px);
+    gap: 8px;
+  }
+  .maze-controls button {
+    height: 50px;
+    font-size: 21px;
+  }
+
+  /* Persistent Footer & Back-to-Top Button */
+  footer {
+    padding: 9px 14px;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    justify-content: center;
+    text-align: center;
+    gap: 3px 10px;
+  }
+  main {
+    padding-bottom: 84px;
+  }
+  .top-button {
+    right: 14px;
+    bottom: 78px !important;
+    width: 42px;
+    height: 42px;
+    font-size: 24px;
+  }
+}
+
 </style>
 </head>
 <body data-theme="vibrant">
