@@ -11,14 +11,15 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# Hide Streamlit's page chrome so the portfolio fills the page.
 st.markdown(
-    """<style>
+    """
+    <style>
     .block-container { padding: 0 !important; max-width: 100% !important; }
-    header[data-testid="stHeader"] { display: none; }
-    div[data-testid="stToolbar"] { display: none; }
-    footer { display: none; }
-    </style>""",
+    header[data-testid="stHeader"],
+    div[data-testid="stToolbar"],
+    footer { display: none !important; }
+    </style>
+    """,
     unsafe_allow_html=True,
 )
 
@@ -31,15 +32,11 @@ possible_html_files = [
 html_file = next((path for path in possible_html_files if path.is_file()), None)
 
 if html_file is None:
-    st.error(
-        "Portfolio HTML file not found. Keep one of these files in the same "
-        "GitHub folder as app.py: Ebenezer_Portfolio_Responsive_Fixed.html, "
-        "Ebenezer Portfolio_Responsive.html, or Ebenezer Portfolio.html."
-    )
+    st.error("Portfolio HTML file not found. Keep the HTML file in the same GitHub folder as app.py.")
     st.stop()
 
 html = html_file.read_text(encoding="utf-8")
 
-# Use components.html because this portfolio relies on inline JavaScript for
-# its email chooser, game dialogs, project dialogs, and theme selector.
-components.html(html, height=2500, scrolling=True)
+# A 720px iframe viewport keeps fixed-position dialogs centred in the
+# visible portfolio area. The long portfolio scrolls inside the iframe.
+components.html(html, height=720, scrolling=True)
