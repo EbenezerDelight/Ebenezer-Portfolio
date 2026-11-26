@@ -20,13 +20,14 @@
  --card-text:#F5F5F5; --card-muted:#A0A0A0; --accent:#FFFFFF; --line:#2A2A2A; --button-text:#0A0A0A;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px;overflow-x:hidden}
-section[id],main[id]{scroll-margin-top:90px}
+html{scroll-behavior:smooth;scroll-padding-top:100px;overflow-x:hidden}
+section[id],main[id]{scroll-margin-top:100px}
 body{overflow-x:hidden}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif;transition:background .3s ease,color .3s ease}
+body{margin:0;padding-top:76px;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif;transition:background .3s ease,color .3s ease}
 a{color:inherit;text-decoration:none}
 .wrap{width:min(1180px,calc(100% - 44px));margin:auto}
-nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+/* Keep the portfolio navigation visible while the visitor scrolls inside Streamlit's HTML frame. */
+nav{position:fixed;top:0;left:0;right:0;width:100%;z-index:100;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .logo{font-size:1.45rem;font-weight:900;letter-spacing:-.08em}
 .logo span{color:var(--accent)}
@@ -674,8 +675,14 @@ img, svg, video, canvas {
 
 /* Mobile Phone View (<= 680px) */
 @media (max-width: 680px) {
+  body {
+    padding-top: 112px;
+  }
   html {
-    scroll-padding-top: 112px;
+    scroll-padding-top: 124px;
+  }
+  section[id], main[id] {
+    scroll-margin-top: 124px;
   }
   .wrap {
     width: calc(100% - 24px);
