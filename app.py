@@ -28,7 +28,7 @@ html_file = folder / "Ebenezer_Portfolio_Responsive_Fixed.html"
 if not html_file.is_file():
     st.error(
         "Portfolio HTML file not found. Keep "
-        "'Ebenezer_Portfolio_Responsive_Fixed.html' in the same folder as app.py."
+        "'Ebenezer Portfolio.html' in the same folder as app.py."
     )
     st.stop()
 
