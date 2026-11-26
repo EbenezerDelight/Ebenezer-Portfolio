@@ -1268,21 +1268,12 @@ img, svg, video, canvas {
 <div><div class="eyebrow">Say hello</div><h2>Let's build something meaningful together.</h2><p class="lead">Have an idea, opportunity, or simply want to connect? I'd be glad to hear from you.</p></div>
 <div class="contact-actions">
 <a href="#" id="copyEmail" role="button" aria-haspopup="dialog">✉ Copy my email</a>
-<a href="#" id="sendEmail" role="button" aria-haspopup="dialog">Send an email ↗</a>
 <a href="https://www.instagram.com/edwin_delight_?jplx=MXR3Z2h2dWNqMG8yZg==" rel="noopener" target="_blank">Instagram ↗</a>
 <a href="https://www.linkedin.com/in/ebenezer-josephraj-a23099291?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_android" rel="noopener" target="_blank">LinkedIn ↗</a>
 <a href="https://github.com/EbenezerDelight" rel="noopener" target="_blank">GitHub ↗</a>
 </div>
 </div>
 </section>
-<div class="contact-choice-overlay" id="sendEmailDialog" role="dialog" aria-modal="true" aria-labelledby="sendEmailTitle">
-  <div class="contact-choice-panel"><button class="contact-choice-close" type="button" data-contact-close aria-label="Close">×</button><div class="eyebrow">CHOOSE YOUR EMAIL APP</div><h3 id="sendEmailTitle">Where would you like to email me?</h3><p>Choose your preferred mailing platform. A new message will open addressed to my personal email.</p><div class="contact-choice-list">
-    <button class="contact-choice-option" type="button" data-mail-provider="gmail"><span><strong>Google Gmail</strong><small>Open a pre-addressed Gmail draft</small></span><span class="choice-mark">↗</span></button>
-    <button class="contact-choice-option" type="button" data-mail-provider="outlook"><span><strong>Microsoft Outlook</strong><small>Open a pre-addressed Outlook draft</small></span><span class="choice-mark">↗</span></button>
-    <button class="contact-choice-option" type="button" data-mail-provider="yahoo"><span><strong>Yahoo Mail</strong><small>Open a pre-addressed Yahoo draft</small></span><span class="choice-mark">↗</span></button>
-    <button class="contact-choice-option" type="button" data-mail-provider="other"><span><strong>Other email app</strong><small>Use your device's default email app</small></span><span class="choice-mark">↗</span></button>
-  </div></div>
-</div>
 <div class="contact-choice-overlay" id="copyEmailDialog" role="dialog" aria-modal="true" aria-labelledby="copyEmailTitle">
   <div class="contact-choice-panel"><button class="contact-choice-close" type="button" data-contact-close aria-label="Close">×</button><div class="eyebrow">COPY EMAIL ADDRESS</div><h3 id="copyEmailTitle">Choose which email to copy</h3><p>Tap either address to copy it to your clipboard.</p><div class="contact-choice-list">
     <button class="contact-choice-option" type="button" data-copy-email="edwinhappy6304@gmail.com"><span><strong>Personal</strong><small>edwinhappy6304@gmail.com</small></span><span class="choice-mark">Copy</span></button>
@@ -1302,13 +1293,9 @@ selector.addEventListener('change', () => {
   document.body.dataset.theme = selector.value;
   localStorage.setItem('ej-portfolio-theme', selector.value);
 });
-const personalEmail = 'edwinhappy6304@gmail.com';
-const workEmail = 'ebenezer.josephraj@cognizant.com';
-const sendDialog = document.getElementById('sendEmailDialog');
 const copyDialog = document.getElementById('copyEmailDialog');
-// Keep contact dialogs as direct children of <body> so fixed positioning
+// Keep the copy-email dialog as a direct child of <body> so fixed positioning
 // is relative to the viewport, not a transformed/scrolling portfolio section.
-document.body.appendChild(sendDialog);
 document.body.appendChild(copyDialog);
 function openContactDialog(dialog){
   // Do not lock body scrolling here: on mobile browsers that can reset the
@@ -1322,24 +1309,9 @@ function closeContactDialog(dialog){
   dialog.classList.remove('is-open');
   dialog.setAttribute('aria-hidden', 'true');
 }
-document.getElementById('sendEmail').addEventListener('click', event => { event.preventDefault(); openContactDialog(sendDialog); });
 document.getElementById('copyEmail').addEventListener('click', event => { event.preventDefault(); openContactDialog(copyDialog); });
 document.querySelectorAll('[data-contact-close]').forEach(button => button.addEventListener('click', () => closeContactDialog(button.closest('.contact-choice-overlay'))));
 document.querySelectorAll('.contact-choice-overlay').forEach(dialog => dialog.addEventListener('click', event => { if(event.target===dialog) closeContactDialog(dialog); }));
-document.querySelectorAll('[data-mail-provider]').forEach(button => button.addEventListener('click', () => {
-  const subject = encodeURIComponent('Hello Ebenezer');
-  const body = encodeURIComponent('Hi Ebenezer,\n\n');
-  const to = encodeURIComponent(personalEmail);
-  const urls = {
-    gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${to}&su=${subject}&body=${body}`,
-    outlook: `https://outlook.live.com/mail/0/deeplink/compose?to=${to}&subject=${subject}&body=${body}`,
-    yahoo: `https://compose.mail.yahoo.com/?to=${to}&subject=${subject}&body=${body}`,
-    other: `mailto:${personalEmail}?subject=${subject}&body=${body}`
-  };
-  const url=urls[button.dataset.mailProvider];
-  if(url) { if(button.dataset.mailProvider==='other') window.location.href=url; else window.open(url,'_blank','noopener,noreferrer'); }
-  closeContactDialog(sendDialog);
-}));
 async function copyContactEmail(email, button){
   let copied=false;
   try { await navigator.clipboard.writeText(email); copied=true; }
@@ -1353,7 +1325,7 @@ async function copyContactEmail(email, button){
   else { mark.textContent='Select and copy'; }
 }
 document.querySelectorAll('[data-copy-email]').forEach(button=>button.addEventListener('click',()=>copyContactEmail(button.dataset.copyEmail,button)));
-document.addEventListener('keydown',event=>{ if(event.key==='Escape'){ [sendDialog,copyDialog].forEach(dialog=>closeContactDialog(dialog)); }});
+document.addEventListener('keydown',event=>{ if(event.key==='Escape'){ closeContactDialog(copyDialog); }});
 </script>
 <div aria-hidden="true" aria-labelledby="modalTitle" aria-modal="true" class="project-modal" id="projectModal" role="dialog"><button aria-label="Close project details" class="modal-backdrop" data-close-modal="true" type="button"></button><div class="modal-panel"><button aria-label="Close" class="modal-close" data-close-modal="true" type="button">×</button><div class="eyebrow">PROJECT / CASE STUDY</div><h2 id="modalTitle">Project details</h2><div class="modal-content" id="modalContent"></div></div></div><script>
 (() => {
