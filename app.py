@@ -23,7 +23,7 @@ st.markdown(
 )
 
 folder = Path(__file__).resolve().parent
-html_file = folder / "Ebenezer_Portfolio_Responsive_Fixed.html"
+html_file = folder / "Ebenezer Portfolio.html"
 
 if not html_file.is_file():
     st.error(
