@@ -1099,6 +1099,76 @@ img, svg, video, canvas {
   .contact-choice-overlay { align-items: center; }
   .contact-choice-panel { width: min(480px, 100%); padding: 20px 16px; }
 }
+
+/* Creative skills and "How I like to work" visual refinement */
+.work-style-card { grid-column: 1 / -1; }
+.work-principles {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  margin-top:18px;
+}
+.work-principle {
+  min-width:0;
+  padding:20px 22px;
+  border:1px solid color-mix(in srgb,var(--card-muted) 22%,transparent);
+  border-radius:16px;
+  background:color-mix(in srgb,var(--card-text) 3.5%,var(--card));
+}
+.work-principle b {
+  display:block;
+  margin:0 0 8px;
+  color:var(--card-text);
+  font-size:1.08rem;
+  letter-spacing:-.015em;
+}
+.work-principle p {
+  margin:0;
+  color:var(--card-muted);
+  line-height:1.7;
+}
+.creative-instagram-link {
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  width:fit-content;
+  max-width:100%;
+  margin-top:20px;
+  padding:12px 16px;
+  border-radius:12px;
+  border:1px solid color-mix(in srgb,var(--card-text) 22%,transparent);
+  background:color-mix(in srgb,var(--accent) 13%,var(--card));
+  color:var(--card-text);
+  font-weight:800;
+  line-height:1.4;
+  transition:transform .2s ease,border-color .2s ease,background .2s ease;
+}
+.creative-instagram-link:hover {
+  transform:translateY(-2px);
+  border-color:var(--accent);
+  background:color-mix(in srgb,var(--accent) 24%,var(--card));
+}
+.about-panel > .eyebrow {
+  display:inline-flex;
+  align-items:center;
+  width:fit-content;
+  max-width:100%;
+  padding:8px 12px;
+  margin-bottom:8px;
+  border-radius:8px;
+  color:var(--card-text) !important;
+  background:color-mix(in srgb,var(--card-text) 8%,var(--card));
+  border-left:3px solid var(--accent);
+  letter-spacing:.1em;
+  text-shadow:none;
+}
+@media(max-width:680px) {
+  .work-principles { grid-template-columns:1fr; gap:10px; margin-top:14px; }
+  .work-principle { padding:16px 17px; }
+  .creative-instagram-link { width:100%; }
+}
+
 </style>
 </head>
 <body data-theme="vibrant">
@@ -1259,17 +1329,28 @@ img, svg, video, canvas {
 <div class="card skill-card"><h3>Programming &amp; Data</h3><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Java</span><span class="chip">Data Analysis</span><span class="chip">Linux</span></div>
 <div class="card skill-card"><h3>Enterprise &amp; Development</h3><span class="chip">SAP PM</span><span class="chip">ERP</span><span class="chip">Databases</span><span class="chip">Application Development</span></div>
 <div class="card skill-card"><h3>AI &amp; Computational</h3><span class="chip">Generative AI</span><span class="chip">Machine Learning</span><span class="chip">Bioinformatics</span><span class="chip">Computational Biology</span><span class="chip">Prompt Engineering</span></div>
-<div class="card skill-card"><h3>Creative</h3><span class="chip">Graphic Design</span><span class="chip">Canva</span><span class="chip">CapCut</span><span class="chip">Photo Editing</span><span class="chip">Video Editing</span></div>
-<div class="card skill-card"><h3>How I like to work</h3><p><b> Analytical</b><br/>Break a problem down, understand the details, then build a solution.</p><p><b> Curious</b><br/>Experiment with unfamiliar tools and learn by doing.</p><p><b> Creative</b><br/>Think beyond the obvious and make ideas engaging.</p><p><b> Always learning</b><br/>Stay adaptable, keep improving, and share what I discover.</p></div>
+<div class="card skill-card"><h3>Arts, Drawing &amp; Editing</h3>
+<span class="chip">Hand Drawing</span><span class="chip">Sketching</span><span class="chip">Anime Character Drawing</span><span class="chip">Ghibli-Inspired Group Artwork</span><span class="chip">Phone Case Drawing</span><span class="chip">Paper Case Drawing</span><span class="chip">Classwork Drawings &amp; Doodles</span><span class="chip">Graphic Design</span><span class="chip">Poster Design</span><span class="chip">Canva</span><span class="chip">Photo Editing</span><span class="chip">CapCut</span><span class="chip">Video Editing</span><span class="chip">Reels &amp; Short-form Editing</span><span class="chip">Visual Storytelling</span>
+<a class="creative-instagram-link" href="https://www.instagram.com/edwin_delight_?jplx=MXR3Z2h2dWNqMG8yZg==" target="_blank" rel="noopener">Explore my drawings &amp; edits on Instagram <span aria-hidden="true">↗</span></a>
+</div>
+<div class="card skill-card work-style-card">
+<h3>How I like to work</h3>
+<div class="work-principles">
+  <div class="work-principle"><b>Analytical</b><p>Break a problem down, understand the details, then build a solution.</p></div>
+  <div class="work-principle"><b>Curious</b><p>Experiment with unfamiliar tools and learn by doing.</p></div>
+  <div class="work-principle"><b>Creative</b><p>Think beyond the obvious and make ideas engaging.</p></div>
+  <div class="work-principle"><b>Always learning</b><p>Stay adaptable, keep improving, and share what I discover.</p></div>
+</div>
+</div>
 </div>
 </section>
 <section id="journey">
 <div class="section-head"><div class="eyebrow">Milestones</div><h2>Learning, work &amp; community</h2><p>A few milestones that have shaped my journey so far.</p></div>
-<div class="timeline"><div class="eyebrow">Aug 2026 – Present</div><b>Programmer Analyst Trainee · Cognizant</b><p>Building a foundation in programming, databases, problem-solving and enterprise technologies at Siruseri, Chennai.</p></div>
-<div class="timeline"><div class="eyebrow">2022 – 2026</div><b>B.Tech Bioinformatics · SASTRA Deemed University</b><p>Graduated with CGPA 8.7735/10; explored computational biology, machine learning and interdisciplinary projects.</p></div>
 <div class="timeline"><div class="eyebrow">Sep 2026</div><b>AI Tools &amp; Claude Workshop · be10x</b><p>Explored AI-powered presentations, data analysis and AI-assisted programming.</p></div>
-<div class="timeline"><div class="eyebrow">Jun 2024</div><b>Advanced Graphic Design · Artisan Academy of Animation &amp; VFX</b><p>Completed advanced graphic design learning in Thanjavur.</p></div>
+<div class="timeline"><div class="eyebrow">Aug 2026 – Present</div><b>Programmer Analyst Trainee · Cognizant</b><p>Building a foundation in programming, databases, problem-solving and enterprise technologies at Siruseri, Chennai.</p></div>
 <div class="timeline"><div class="eyebrow">May 2026</div><b>Vacation Bible School Volunteer · CSI St. Andrew's Church</b><p>Contributed as a volunteer during the church's Vacation Bible School programme.</p></div>
+<div class="timeline"><div class="eyebrow">Completed 2026 · 2022–2026</div><b>B.Tech Bioinformatics · SASTRA Deemed University</b><p>Graduated with CGPA 8.7735/10; explored computational biology, machine learning and interdisciplinary projects.</p></div>
+<div class="timeline"><div class="eyebrow">Jun 2024</div><b>Advanced Graphic Design · Artisan Academy of Animation &amp; VFX</b><p>Completed advanced graphic design learning in Thanjavur.</p></div>
 </section>
 
 <section id="contact">
@@ -1330,8 +1411,24 @@ async function copyContactEmail(email, button){
     input.remove();
   }
   const mark=button.querySelector('.choice-mark');
-  if(copied){ mark.textContent='✓ Copied'; button.setAttribute('aria-label',email+' copied'); }
-  else { mark.textContent='Select and copy'; }
+  if(button._copyResetTimer) clearTimeout(button._copyResetTimer);
+  if(copied){
+    mark.textContent='✓ Copied';
+    button.setAttribute('aria-label',email+' copied');
+    button._copyResetTimer=setTimeout(()=>{
+      mark.textContent='Copy';
+      button.setAttribute('aria-label','Copy '+email);
+      button._copyResetTimer=null;
+    },500);
+  } else {
+    mark.textContent='Could not copy';
+    button.setAttribute('aria-label','Could not copy '+email);
+    button._copyResetTimer=setTimeout(()=>{
+      mark.textContent='Copy';
+      button.setAttribute('aria-label','Copy '+email);
+      button._copyResetTimer=null;
+    },500);
+  }
 }
 document.querySelectorAll('[data-copy-email]').forEach(button=>button.addEventListener('click',()=>copyContactEmail(button.dataset.copyEmail,button)));
 document.addEventListener('keydown',event=>{ if(event.key==='Escape'){ closeContactDialog(copyDialog); }});
